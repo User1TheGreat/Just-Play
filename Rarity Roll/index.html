@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rarity Roll - Just Play</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Top Navigation & View Toggles -->
+    <div class="nav-bar">
+      <a href="../index.html" class="back-link">← BACK TO HOME</a>
+      <div class="menu-toggles">
+        <button id="openShopBtn" class="nav-toggle-btn">🛍️ SHOP</button>
+        <button id="openIndexBtn" class="nav-toggle-btn">📋 INDEX</button>
+      </div>
+    </div>
+
+    <div class="game-container">
+      <!-- FOCUSED MAIN ROLLER INTERFACE -->
+      <section class="game-section main-roller">
+        <header class="game-header">
+          <h1>RARITY ROLL</h1>
+          <div class="stats-bar">
+            <span class="stat-node"
+              >ROLLS: <strong id="rollCounter">0</strong></span
+            >
+            <span class="stat-node"
+              >COINS: <strong id="coinCounter">0</strong></span
+            >
+          </div>
+        </header>
+
+        <div class="display-panel">
+          <div id="rarityDisplay" class="rarity-text r-common">COMMON</div>
+          <div id="chanceDisplay" class="chance-text">1 in 2</div>
+        </div>
+
+        <div class="control-actions">
+          <button id="rollBtn" class="prime-btn">ROLL</button>
+          <button id="autoToggleBtn" class="utility-btn">AUTO: OFF</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- SEPARATE POP-UP PANEL: THE 5-UPGRADE SHOP -->
+    <div id="shopModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>UPGRADE SHOP</h2>
+          <button id="closeShopBtn" class="close-modal-btn">×</button>
+        </div>
+        <div class="shop-layout">
+          <!-- Upgrade 1: Luck -->
+          <button id="buyLuckBtn" class="shop-card">
+            <span class="item-title"
+              >🍀 Luck Multiplier (<span id="luckLvl">1</span>)</span
+            >
+            <p class="item-desc">
+              Doubles your overall luck multipliers per tier.
+            </p>
+            <span class="item-cost"
+              >Cost: <span id="luckCost">15</span> Coins</span
+            >
+          </button>
+
+          <!-- Upgrade 2: Speed Roller -->
+          <button id="buyAutoBtn" class="shop-card">
+            <span class="item-title"
+              >⚡ Speed Roller (<span id="autoLvl">0</span>)</span
+            >
+            <p class="item-desc">
+              Unlocks auto-rolling and accelerates intervals by 200ms.
+            </p>
+            <span class="item-cost"
+              >Cost: <span id="autoCost">50</span> Coins</span
+            >
+          </button>
+
+          <!-- Upgrade 3: Coin Bounty -->
+          <button id="buyBountyBtn" class="shop-card">
+            <span class="item-title"
+              >🪙 Coin Bounty (<span id="bountyLvl">1</span>)</span
+            >
+            <p class="item-desc">
+              Increases coin payouts across all drop weight tiers by +50%.
+            </p>
+            <span class="item-cost"
+              >Cost: <span id="bountyCost">100</span> Coins</span
+            >
+          </button>
+
+          <!-- Upgrade 4: Critical Roll -->
+          <button id="buyCritBtn" class="shop-card">
+            <span class="item-title"
+              >💥 Critical Roll (<span id="critLvl">0</span>)</span
+            >
+            <p class="item-desc">
+              Gives a 5% flat chance to instantly multiply your luck by 10x on a
+              single roll.
+            </p>
+            <span class="item-cost"
+              >Cost: <span id="critCost">350</span> Coins</span
+            >
+          </button>
+
+          <!-- Upgrade 5: Passive Interest -->
+          <button id="buyInterestBtn" class="shop-card">
+            <span class="item-title"
+              >📈 Corporate Interest (<span id="interestLvl">0</span>)</span
+            >
+            <p class="item-desc">
+              Generates +1 coin passively every 2 seconds even without rolling.
+            </p>
+            <span class="item-cost"
+              >Cost: <span id="interestCost">750</span> Coins</span
+            >
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEPARATE POP-UP PANEL: THE 15-RARITY INDEX -->
+    <div id="indexModal" class="modal-overlay">
+      <div class="modal-content scrollable">
+        <div class="modal-header">
+          <h2>RARITY INDEX</h2>
+          <button id="closeIndexBtn" class="close-modal-btn">×</button>
+        </div>
+        <div class="index-layout" id="indexGrid">
+          <!-- Programmatically generated inside script.js to keep things clean -->
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

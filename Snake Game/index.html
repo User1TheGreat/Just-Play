@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake Core - Matrix Engine</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- RETRO-MINIMALIST APPLICATION WRAPPER -->
+    <div class="game-container">
+      <!-- HEADER BLOCK WITH INTEGRATED TELEMETRY -->
+      <header class="game-header">
+        <div class="title-group">
+          <h1>SNAKE GAME</h1>
+        </div>
+
+        <div class="score-board">
+          <div class="score-node">
+            <span class="score-label">SCORE</span>
+            <span id="currentScore" class="score-value">000</span>
+          </div>
+          <div class="score-divider"></div>
+          <div class="score-node">
+            <span class="score-label">HIGH SCORE</span>
+            <span id="highScore" class="score-value">000</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- CORE HTML5 MATRIX CANVAS -->
+      <div class="canvas-wrapper">
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+        <!-- OVERLAY INJECTED BY JS DURING CRASH STATES -->
+        <div id="deathOverlay" class="overlay-screen" style="display: none">
+          <div class="overlay-content">
+            <h2 class="alert-title">GAME OVER</h2>
+            <p class="alert-desc">YOU HAVE CRASHED</p>
+            <button id="restartBtn" class="action-btn">
+              RESTART
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOOTER COMMAND CONTROLS -->
+      <footer class="game-controls">
+        <div class="control-tip">Movement: [W, A, S, D] or Arrow Keys</div>
+        <a href="../index.html" class="nav-back-link">RETURN TO HOME</a>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

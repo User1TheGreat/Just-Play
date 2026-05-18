@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reaction Test - Just Play</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="nav-bar">
+      <a href="../index.html" class="back-link">← BACK TO HOME</a>
+      <div class="menu-toggles">
+        <button id="openMetricsBtn" class="nav-toggle-btn">🎯 METRICS</button>
+        <button id="openScoresBtn" class="nav-toggle-btn">🏆 TOP 5</button>
+      </div>
+    </div>
+
+    <div class="game-container">
+      <section class="game-section main-tester">
+        <header class="game-header">
+          <h1>REACTION TEST</h1>
+          <div class="stats-bar">
+            <span class="stat-node"
+              >TOTAL ATTEMPTS: <strong id="attemptCounter">0</strong></span
+            >
+            <span class="stat-node"
+              >LAST TIME: <strong id="timeDisplay">0ms</strong></span
+            >
+          </div>
+        </header>
+
+        <!-- THE INTERACTIVE REACTION ZONE -->
+        <div id="targetBox" class="reaction-box state-waiting">
+          <span id="boxText">CLICK TO START</span>
+        </div>
+
+        <div id="feedbackText" class="status-msg">Ready when you are...</div>
+      </section>
+    </div>
+
+    <!-- PERFORMANCE METRICS MODAL -->
+    <div id="metricsModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>PERFORMANCE METRICS</h2>
+          <button id="closeMetricsBtn" class="close-modal-btn">×</button>
+        </div>
+        <div class="metrics-layout">
+          <div class="metric-card">
+            <span class="metric-label">Lifetime Average</span>
+            <div class="metric-value"><span id="avgTimeDisplay">0</span>ms</div>
+            <p class="metric-desc">
+              The true benchmark of your consistent neural processing speeds.
+            </p>
+          </div>
+
+          <div class="metric-card">
+            <span class="metric-label">Perfect Runs (&lt;200ms)</span>
+            <div class="metric-value" style="color: #4ade80">
+              <span id="perfectRunsDisplay">0</span>
+            </div>
+            <p class="metric-desc">
+              Total times you broke into the elite legendary speed bracket.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HIGH SCORES MODAL -->
+    <div id="scoresModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>PERSONAL BESTS (TOP 5)</h2>
+          <button id="closeScoresBtn" class="close-modal-btn">×</button>
+        </div>
+        <ol class="score-list" id="scoreLeaderboard">
+          <!-- Injected via JavaScript -->
+        </ol>
+        <button id="clearScoresBtn" class="danger-btn">RESET RECORDS</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,195 @@
+/* --- Core Engine Colors --- */
+:root {
+  --bg-main: #0b0c0e;
+  --panel-bg: #111317;
+  --border-color: #242933;
+  --neon-gold: #eab308;
+  --neon-gold-glow: rgba(234, 179, 8, 0.15);
+  --text-main: #ffffff;
+  --text-sub: #9ca3af;
+  --text-dark: #4b5563;
+}
+
+/* --- Global Overrides --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* --- Modular Main Housing --- */
+.game-container {
+  width: 100%;
+  max-width: 440px; /* Wraps our 400px canvas perfectly + borders */
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* --- Header & Telemetry Configuration --- */
+.game-header {
+  background-color: var(--panel-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.game-header h1 {
+  font-size: 1.25rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+/* --- Split Score Modules --- */
+.score-board {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.score-node {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.score-label {
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: 0.5px;
+}
+
+.score-value {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--text-main);
+}
+
+.score-divider {
+  width: 1px;
+  height: 20px;
+  background-color: var(--border-color);
+}
+
+/* --- Interactive Canvas Workspace Sandbox --- */
+.canvas-wrapper {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 3px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease;
+}
+
+#gameCanvas {
+  background-color: var(--panel-bg);
+  display: block;
+}
+
+/* --- Crash State UI Overlay Window --- */
+.overlay-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(11, 12, 14, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.overlay-content {
+  text-align: center;
+  padding: 2rem;
+}
+
+.alert-title {
+  color: #ef4444; /* Alert Crimson */
+  font-size: 1.75rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin-bottom: 0.25rem;
+}
+
+.alert-desc {
+  color: var(--text-sub);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.75rem;
+}
+
+/* --- Action Control Buttons --- */
+.action-btn {
+  background: transparent;
+  border: 2px solid var(--neon-gold);
+  color: var(--neon-gold);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  background-color: var(--neon-gold);
+  color: #000000;
+  box-shadow: 0 0 15px var(--neon-gold-glow);
+}
+
+/* --- Game Navigation Footer Links --- */
+.game-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.control-tip {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: 0.5px;
+}
+
+.nav-back-link {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-sub);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.2s ease;
+  border-bottom: 1px dashed var(--border-color);
+  padding-bottom: 2px;
+}
+
+.nav-back-link:hover {
+  color: var(--text-main);
+  border-color: var(--text-main);
+}

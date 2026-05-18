@@ -1,0 +1,251 @@
+/* ==========================================================================
+   1. CORE DESIGN VARIABLES & PREMIUM PALETTE
+   ========================================================================== */
+:root {
+  --bg-color: #08090b; /* Slightly deeper black for maximum contrast */
+  --card-bg: #111317; /* Clean charcoal card base */
+  --panel-bg: #16191f; /* Richer container background */
+  --border-color: #222731; /* Subtle structural framing lines */
+  --text-primary: #ffffff; /* Pure white for crisp headings */
+  --text-secondary: #9ca3af; /* Soft slate for descriptions */
+  --text-muted: #4b5563; /* Muted iron for tags and labels */
+}
+
+/* ==========================================================================
+   2. GLOBAL BASE & RESET
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  padding: 6rem 2rem; /* Added breathing room at the top */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   3. CLEAN UPGRADED ARCADE HEADER (No Stats Bar)
+   ========================================================================== */
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 5rem; /* Pushes grid down elegantly */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard-header h1 {
+  font-size: 4rem; /* Slightly larger, bolder presence */
+  font-weight: 900;
+  letter-spacing: -3px; /* Tighter, cleaner kerning */
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.dashboard-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding-bottom: 0.5rem;
+  max-width: 600px; /* Gently widened to balance the 31-word layout */
+}
+
+/* ==========================================================================
+   4. THREE-COLUMN GAME MATRIX
+   ========================================================================== */
+.dashboard-grid {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; /* Increased spacing to let cards breathe */
+  justify-content: center;
+}
+
+/* Adaptive mobile layout collapse */
+@media (max-width: 950px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+  }
+}
+
+/* ==========================================================================
+   5. GAME CARD UPGRADES & INTERACTIVE GLOWS
+   ========================================================================== */
+.game-launcher-card {
+  background-color: var(--card-bg);
+  border: 2px solid var(--border-color); /* Sleeker 2px border */
+  border-radius: 20px; /* Smoother corner radius */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  /* Premium cubic-bezier transition for snappy physical pop */
+  transition:
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.3s ease,
+    box-shadow 0.4s ease;
+}
+
+/* Interactive Card Focus / Hover States */
+.game-launcher-card:hover {
+  transform: translateY(-6px); /* Clean floating lift */
+  border-color: var(--text-secondary);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.card-body {
+  padding: 2rem; /* Amplified inner padding */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.card-meta {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 1.5px; /* Wide tracked meta text */
+  margin-bottom: 0.75rem;
+}
+
+.card-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
+}
+
+.card-description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  flex-grow: 1;
+}
+
+/* ==========================================================================
+   6. PREMIUM ACTION LAUNCH BUTTONS
+   ========================================================================== */
+.launch-btn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- Cyan Accents (Rarity Roll) --- */
+.btn-rarity {
+  border: 2px solid #06b6d4;
+  color: #67e8f9;
+  background: rgba(6, 182, 212, 0.02);
+}
+.btn-rarity:hover {
+  background: #06b6d4;
+  color: #000000;
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.35);
+}
+
+/* --- Red Accents (Reaction Test) --- */
+.btn-reaction {
+  border: 2px solid #991b1b;
+  color: #f87171;
+  background: rgba(153, 27, 27, 0.02);
+}
+.btn-reaction:hover {
+  background: #991b1b;
+  color: #ffffff;
+  box-shadow: 0 0 25px rgba(153, 27, 27, 0.4);
+}
+
+/* --- Gold Accents (Snake) --- */
+.btn-snake {
+  border: 2px solid #eab308;
+  color: #fef08a;
+  background: rgba(234, 179, 8, 0.02);
+}
+.btn-snake:hover {
+  background: #eab308;
+  color: #000000;
+  box-shadow: 0 0 25px rgba(234, 179, 8, 0.35);
+}
+
+/* ==========================================================================
+   7. BACKDROP GLOW INJECTIONS
+   ========================================================================== */
+.card-glow-accent {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  transition: background 0.4s ease;
+  z-index: 1;
+}
+
+/* Gentle radial ambient glow on hover */
+.game-launcher-card:hover .rarity-glow {
+  background: radial-gradient(
+    circle at center,
+    rgba(6, 182, 212, 0.06) 0%,
+    transparent 60%
+  );
+}
+.game-launcher-card:hover .reaction-glow {
+  background: radial-gradient(
+    circle at center,
+    rgba(153, 27, 27, 0.09) 0%,
+    transparent 60%
+  );
+}
+.game-launcher-card:hover .snake-glow {
+  background: radial-gradient(
+    circle at center,
+    rgba(234, 179, 8, 0.06) 0%,
+    transparent 60%
+  );
+}
+
+/* ==========================================================================
+   8. CLEAN DISCRETE FOOTER
+   ========================================================================== */
+.dashboard-footer {
+  width: 100%;
+  max-width: 1150px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  border-top: 2px solid var(--border-color);
+  padding-top: 2rem;
+  margin-top: auto;
+}
