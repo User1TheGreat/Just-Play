@@ -1,5 +1,6 @@
 // Game Core Data State
 let state = {
+  // Existing
   rolls: 0,
   coins: 0,
   luckLevel: 1,
@@ -14,13 +15,35 @@ let state = {
   interestCost: 750,
   isAutoRolling: false,
 };
-
-// 15 Balanced Rarity Progression Configuration Tiers
 const rarities = [
+  // === NEW EXTREME ENDGAME TIERS (Harder than Transcendent) ===
+  {
+    id: "the_matrix",
+    name: "🟩 The Matrix",
+    weight: 100000000000000, // 1 in 100 Trillion
+    coinsAwarded: 50000000,
+    class: "r-matrix",
+  },
+  {
+    id: "quantum_immortality",
+    name: "⚛️ Quantum Immortality",
+    weight: 5000000000000, // 1 in 5 Trillion
+    coinsAwarded: 12500000,
+    class: "r-quantum",
+  },
+  {
+    id: "absolute_zero",
+    name: "❄️ Absolute Zero",
+    weight: 100000000000, // 1 in 100 Billion
+    coinsAwarded: 2500000,
+    class: "r-absolute",
+  },
+
+  // === YOUR ORIGINAL HIGH TIERS ===
   {
     id: "transcendent",
     name: "Transcendent",
-    weight: 10000000000,
+    weight: 10000000000, // 1 in 10 Billion
     coinsAwarded: 500000,
     class: "r-transcendent",
   },
@@ -66,6 +89,17 @@ const rarities = [
     coinsAwarded: 150,
     class: "r-void",
   },
+
+  // === NEW MID-TIER (Easier than Celestial) ===
+  {
+    id: "ethereal",
+    name: "👻 Ethereal",
+    weight: 7500,
+    coinsAwarded: 90,
+    class: "r-ethereal",
+  },
+
+  // === YOUR ORIGINAL MID TIERS (Slightly re-spaced for the new additions) ===
   {
     id: "divine",
     name: "🔱 Divine",
@@ -76,17 +110,28 @@ const rarities = [
   {
     id: "celestial",
     name: "✨ Celestial",
-    weight: 1500,
-    coinsAwarded: 30,
+    weight: 2500, // Balanced smooth step down from Divine
+    coinsAwarded: 45,
     class: "r-celestial",
   },
   {
     id: "mythic",
     name: "Mythic",
-    weight: 500,
-    coinsAwarded: 15,
+    weight: 750, // Re-spaced to let Cybernetic slide under it
+    coinsAwarded: 20,
     class: "r-mythic",
   },
+
+  // === NEW LOWER-MID TIER (Easier than Celestial) ===
+  {
+    id: "cybernetic",
+    name: "🤖 Cybernetic",
+    weight: 500,
+    coinsAwarded: 12,
+    class: "r-cybernetic",
+  },
+
+  // === YOUR ORIGINAL STARTING TIERS ===
   {
     id: "legendary",
     name: "Legendary",
@@ -158,7 +203,6 @@ window.addEventListener("click", (e) => {
 let autoInterval = null;
 
 function executeRoll() {
-
   state.rolls++;
   rollCounter.textContent = state.rolls;
 

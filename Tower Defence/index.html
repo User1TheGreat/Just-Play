@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Core Defense Hub</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- NEON SAVE MANAGEMENT OVERLAY -->
+    <div id="save-menu-overlay" class="menu-overlay">
+      <div class="menu-window animate-fade-in">
+        <!-- NEW: Global Portal Hub Header with Exit Button -->
+        <header class="menu-header">
+          <a href="../index.html" class="hub-exit-btn">← EXIT TO HUB</a>
+          <h2 class="menu-title">SELECT DATA SLOT</h2>
+        </header>
+
+        <div class="slots-container">
+          <div class="save-slot">
+            <div class="slot-info" id="slot-1-info">SLOT 1: EMPTY</div>
+            <div class="slot-actions">
+              <button class="load-slot-btn" data-slot="1">LOAD</button>
+              <button class="clear-slot-btn" data-slot="1">DELETE</button>
+            </div>
+          </div>
+          <div class="save-slot">
+            <div class="slot-info" id="slot-2-info">SLOT 2: EMPTY</div>
+            <div class="slot-actions">
+              <button class="load-slot-btn" data-slot="2">LOAD</button>
+              <button class="clear-slot-btn" data-slot="2">DELETE</button>
+            </div>
+          </div>
+          <div class="save-slot">
+            <div class="slot-info" id="slot-3-info">SLOT 3: EMPTY</div>
+            <div class="slot-actions">
+              <button class="load-slot-btn" data-slot="3">LOAD</button>
+              <button class="clear-slot-btn" data-slot="3">DELETE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN GAME CORE CONTAINER -->
+    <div id="game-container" class="hidden">
+      <header class="game-hud animate-slide-down">
+        <div class="hud-item">
+          <button id="home-btn" class="nav-btn">SAVE & QUIT</button>
+        </div>
+        <div class="hud-item">
+          HEALTH: <span id="health-value" class="neon-text-red">100</span>
+        </div>
+        <div class="hud-item">
+          BITS: <span id="bits-value" class="neon-text-cyan">150</span>
+        </div>
+        <div class="hud-item">
+          WAVE: <span id="wave-value" class="neon-text-purple">1</span>
+        </div>
+      </header>
+
+      <main class="canvas-container animate-fade-in">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+      </main>
+
+      <footer class="control-deck animate-slide-up">
+        <button class="shop-btn" data-tower="basic">
+          BASIC<span>50B</span>
+        </button>
+        <button class="shop-btn" data-tower="fast">
+          SPEED<span>90B</span>
+        </button>
+        <button class="shop-btn" data-tower="sniper">
+          SNIPER<span>140B</span>
+        </button>
+        <button class="shop-btn" data-tower="plasma">
+          PLASMA<span>200B</span>
+        </button>
+        <button class="shop-btn" data-tower="tesla">
+          TESLA<span>350B</span>
+        </button>
+        <button class="shop-btn" data-tower="frost">
+          FROST<span>180B</span>
+        </button>
+        <button class="shop-btn" data-tower="void">
+          VOID<span>500B</span>
+        </button>
+        <button id="start-wave-btn" class="action-btn">START WAVE</button>
+      </footer>
+    </div>
+
+    <script src="./game.js"></script>
+  </body>
+</html>

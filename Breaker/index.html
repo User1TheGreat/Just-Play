@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Classic Breaker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <!-- HUD CONTROLS -->
+      <header class="game-header">
+        <div class="hud-bit">
+          <span class="hud-label">SCORE:</span>
+          <span id="score-display" class="hud-value">0000</span>
+        </div>
+        <div class="hud-bit">
+          <span class="hud-label">LIVES:</span>
+          <span id="lives-display" class="hud-value">|||</span>
+        </div>
+        <div class="hud-bit">
+          <span class="hud-label">MODIFIER:</span>
+          <span id="mod-display" class="hud-value mod-none">NONE</span>
+        </div>
+      </header>
+
+      <!-- GAME DISPLAY CONTAINER -->
+      <div class="canvas-wrapper">
+        <canvas id="gameCanvas" width="800" height="500"></canvas>
+
+        <!-- OVERLAY INTERFACES -->
+        <div id="start-overlay" class="menu-overlay">
+          <h1 class="neon-title">CLASSIC BREAKER</h1>
+          <p class="menu-instructions">
+            Use your paddle to bounce the ball and break all the tiles!
+          </p>
+          <button id="start-btn" class="menu-btn">INITIALIZE CORE</button>
+        </div>
+
+        <div id="gameover-overlay" class="menu-overlay hidden">
+          <h1 class="neon-title text-error">GAME OVER</h1>
+          <p class="menu-instructions">
+            FINAL SCORE: <span id="final-score">0</span>
+          </p>
+          <button id="restart-btn" class="menu-btn btn-error">
+            RETRY?
+          </button>
+        </div>
+
+        <div id="win-overlay" class="menu-overlay hidden">
+          <h1 class="neon-title text-success">YOU WIN!</h1>
+          <p class="menu-instructions">
+            FINAL SCORE:
+            <span id="win-score">0</span>
+          </p>
+          <button id="win-btn" class="menu-btn btn-success">
+            START NEXT CHALLENGE
+          </button>
+        </div>
+      </div>
+
+      <!-- REVERSE RETURN BRIDGE TO DASHBOARD -->
+      <footer class="game-footer">
+        <a href="../index.html" class="return-link">← RETURN TO MAIN HUB</a>
+        <div class="control-tip">MOVE: MOUSE / TRACKPAD</div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,294 @@
+:root {
+  --bg-main: #020205;
+  --bg-surface: rgba(13, 13, 25, 0.75);
+  --border-neon: #2a2a4a;
+  --purple-glow: #a855f7;
+  --cyan-glow: #06b6d4;
+  --pink-glow: #f43f5e;
+  --text-dim: #8f8fab;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  background: var(--bg-main);
+  background-image: radial-gradient(circle at center, #0a0a1a 0%, #020205 100%);
+  color: #f4f4f7;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* REFRESHING ANIMATIONS */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+.animate-slide-down {
+  animation: slideDown 0.4s ease-out forwards;
+}
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out forwards;
+}
+
+/* GLASSMORPHISM PORTAL OVERLAY */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 3, 8, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.menu-window {
+  background: var(--bg-surface);
+  border: 2px solid var(--purple-glow);
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.25);
+  width: 100%;
+  max-width: 555px;
+  padding: 2.5rem;
+  border-radius: 8px;
+}
+
+/* NEW: Layout configuration for Menu Top Bar */
+.menu-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* NEW: Portal Hub Back Button Link Styling */
+.hub-exit-btn {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: var(--cyan-glow);
+  border: 1px solid var(--cyan-glow);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  align-self: flex-start;
+  text-shadow: 0 0 5px rgba(6, 182, 212, 0.3);
+}
+.hub-exit-btn:hover {
+  background: var(--cyan-glow);
+  color: #000;
+  box-shadow: 0 0 15px var(--cyan-glow);
+}
+
+.menu-title {
+  text-align: center;
+  letter-spacing: 3px;
+  color: #fff;
+  text-shadow: 0 0 10px var(--purple-glow);
+  margin-top: 0.5rem;
+}
+
+.slots-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.save-slot {
+  background: rgba(20, 20, 38, 0.6);
+  border: 1px solid var(--border-neon);
+  padding: 1.2rem;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border-color 0.2s;
+}
+.save-slot:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+}
+
+.slot-info {
+  font-weight: bold;
+  color: var(--text-dim);
+}
+.slot-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* NEON BUTTON INTERACTION FRAMEWORK */
+button {
+  font-weight: bold;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+  border: 1px solid var(--border-neon);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.load-slot-btn:hover {
+  border-color: var(--cyan-glow);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+  color: var(--cyan-glow);
+}
+.clear-slot-btn:hover {
+  border-color: var(--pink-glow);
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.4);
+  color: var(--pink-glow);
+}
+
+/* CENTRAL CORE SCREEN DESIGN */
+#game-container {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.game-hud {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-neon);
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0.75rem;
+  align-items: center;
+}
+.hud-item {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.05rem;
+}
+
+.neon-text-red {
+  text-shadow: 0 0 8px var(--pink-glow);
+  color: var(--pink-glow);
+}
+.neon-text-cyan {
+  text-shadow: 0 0 8px var(--cyan-glow);
+  color: var(--cyan-glow);
+}
+.neon-text-purple {
+  text-shadow: 0 0 8px var(--purple-glow);
+  color: var(--purple-glow);
+}
+
+.nav-btn {
+  border-color: var(--purple-glow);
+  color: var(--purple-glow);
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+}
+.nav-btn:hover {
+  background: var(--purple-glow);
+  color: #000;
+  box-shadow: 0 0 15px var(--purple-glow);
+}
+
+.canvas-container {
+  border: 2px solid var(--border-neon);
+  background: #010103;
+  line-height: 0;
+  border-radius: 6px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+}
+#gameCanvas {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.control-deck {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-neon);
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 0.75rem;
+}
+
+.shop-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.8rem;
+  padding: 0.5rem;
+}
+.shop-btn span {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+}
+.shop-btn:hover {
+  border-color: var(--purple-glow);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.action-btn {
+  grid-column: span 4;
+  border-color: var(--cyan-glow);
+  color: var(--cyan-glow);
+  padding: 0.75rem;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+.action-btn:hover:not(:disabled) {
+  background: var(--cyan-glow);
+  color: #000;
+  box-shadow: 0 0 15px var(--cyan-glow);
+}
+.action-btn:disabled {
+  color: #3a3a52;
+  border-color: #161626;
+  cursor: not-allowed;
+}

@@ -2,13 +2,23 @@
    1. CORE DESIGN VARIABLES & PREMIUM PALETTE
    ========================================================================== */
 :root {
-  --bg-color: #08090b; /* Slightly deeper black for maximum contrast */
-  --card-bg: #111317; /* Clean charcoal card base */
-  --panel-bg: #16191f; /* Richer container background */
-  --border-color: #222731; /* Subtle structural framing lines */
-  --text-primary: #ffffff; /* Pure white for crisp headings */
-  --text-secondary: #9ca3af; /* Soft slate for descriptions */
-  --text-muted: #4b5563; /* Muted iron for tags and labels */
+  /* Ultra-Deep Base Matrix */
+  --bg-color: #050608; /* True void black for infinite contrast */
+  --card-bg: rgba(17, 19, 23, 0.75); /* Acrylic glass overlay base */
+  --panel-bg: #0d0f12; /* Structured technical control deck */
+  --border-color: #1a1e26; /* Base mechanical framing */
+
+  /* System Brand Colors (High-Saturation Neon Matrix) */
+  --accent-rarity: #06b6d4; /* Cyber Cyan */
+  --accent-reaction: #ef4444; /* Volatile Crimson */
+  --accent-snake: #eab308; /* Arcade Gold */
+  --accent-defense: #a855f7; /* System Overdrive Purple */
+  --accent-breaker: #00ffcc; /* Cyber Emerald Green */
+
+  /* Precision Typography Scale */
+  --text-primary: #ffffff; /* Pure laser white */
+  --text-secondary: #9ca3af; /* Clean engineering slate */
+  --text-muted: #6b7280; /* High-visibility data iron */
 }
 
 /* ==========================================================================
@@ -30,12 +40,26 @@
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
-  padding: 6rem 2rem; /* Added breathing room at the top */
+  padding: 6rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
   letter-spacing: -0.01em;
+
+  /* --- TYPING THE TEXTURE RENDERERS HERE --- */
+  overflow-x: hidden;
+  background-image:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.03),
+      rgba(0, 255, 0, 0.01),
+      rgba(0, 0, 255, 0.03)
+    );
+  background-size:
+    100% 4px,
+    6px 100%;
 }
 
 /* ==========================================================================
@@ -43,19 +67,25 @@ body {
    ========================================================================== */
 .dashboard-header {
   text-align: center;
-  margin-bottom: 5rem; /* Pushes grid down elegantly */
+  margin-bottom: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .dashboard-header h1 {
-  font-size: 4rem; /* Slightly larger, bolder presence */
   font-weight: 900;
-  letter-spacing: -3px; /* Tighter, cleaner kerning */
   color: var(--text-primary);
   text-transform: uppercase;
   margin-bottom: 1rem;
+
+  /* Your updated and newly typed properties: */
+  font-size: 3.5rem;
+  letter-spacing: 6px;
+  background: linear-gradient(180deg, #ffffff 0%, #9ca3af 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
 }
 
 .dashboard-subtitle {
@@ -63,7 +93,9 @@ body {
   color: var(--text-secondary);
   line-height: 1.6;
   padding-bottom: 0.5rem;
-  max-width: 600px; /* Gently widened to balance the 31-word layout */
+
+  /* Your updated property: */
+  max-width: 750px;
 }
 
 /* ==========================================================================
@@ -75,15 +107,23 @@ body {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem; /* Increased spacing to let cards breathe */
+  gap: 2rem;
   justify-content: center;
 }
 
-/* Adaptive mobile layout collapse */
+/* Updated tablet layout (drops to 2 columns seamlessly) */
 @media (max-width: 950px) {
   .dashboard-grid {
-    grid-template-columns: 1fr;
-    max-width: 450px;
+    grid-template-columns: repeat(2, 1fr); /* Typed change */
+    max-width: 750px; /* Typed change */
+  }
+}
+
+/* New mobile layout collapse */
+@media (max-width: 650px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr; /* Typed addition */
+    max-width: 400px; /* Typed addition */
   }
 }
 
@@ -91,50 +131,71 @@ body {
    5. GAME CARD UPGRADES & INTERACTIVE GLOWS
    ========================================================================== */
 .game-launcher-card {
-  background-color: var(--card-bg);
-  border: 2px solid var(--border-color); /* Sleeker 2px border */
-  border-radius: 20px; /* Smoother corner radius */
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  /* Premium cubic-bezier transition for snappy physical pop */
   transition:
     transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
     border-color 0.3s ease,
     box-shadow 0.4s ease;
+
+  /* Your updated and newly typed properties: */
+  background: rgba(17, 19, 23, 0.75);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Interactive Card Focus / Hover States */
 .game-launcher-card:hover {
-  transform: translateY(-6px); /* Clean floating lift */
-  border-color: var(--text-secondary);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); /* Updated shadow weight */
+}
+
+/* New Typed Underlayer Glow Engine */
+.card-glow-accent {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+.game-launcher-card:hover .card-glow-accent {
+  opacity: 1;
 }
 
 .card-body {
-  padding: 2rem; /* Amplified inner padding */
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  height: 100%;
   position: relative;
   z-index: 2;
+
+  /* Your updated property: */
+  flex-grow: 1;
 }
 
 .card-meta {
   font-size: 0.7rem;
   font-weight: 800;
   color: var(--text-muted);
-  letter-spacing: 1.5px; /* Wide tracked meta text */
   margin-bottom: 0.75rem;
+
+  /* Your updated property: */
+  letter-spacing: 2px;
 }
 
 .card-title {
   font-size: 1.6rem;
-  font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 1rem;
-  letter-spacing: -0.5px;
+
+  /* Your updated properties: */
+  font-weight: 900;
+  letter-spacing: 1px;
 }
 
 .card-description {
@@ -152,49 +213,76 @@ body {
   display: block;
   text-align: center;
   text-decoration: none;
-  padding: 14px;
-  border-radius: 10px;
-  font-size: 0.8rem;
   font-weight: 800;
-  letter-spacing: 1px;
   text-transform: uppercase;
   transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Your updated and newly typed properties: */
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  margin-top: auto;
 }
 
 /* --- Cyan Accents (Rarity Roll) --- */
 .btn-rarity {
-  border: 2px solid #06b6d4;
-  color: #67e8f9;
-  background: rgba(6, 182, 212, 0.02);
+  border: 1px solid var(--accent-rarity);
+  color: var(--accent-rarity);
+  background: rgba(6, 182, 212, 0.01);
 }
 .btn-rarity:hover {
-  background: #06b6d4;
+  background: var(--accent-rarity);
   color: #000000;
-  box-shadow: 0 0 25px rgba(6, 182, 212, 0.35);
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
 }
 
 /* --- Red Accents (Reaction Test) --- */
 .btn-reaction {
-  border: 2px solid #991b1b;
-  color: #f87171;
-  background: rgba(153, 27, 27, 0.02);
+  border: 1px solid var(--accent-reaction);
+  color: var(--accent-reaction);
+  background: rgba(239, 68, 68, 0.01);
 }
 .btn-reaction:hover {
-  background: #991b1b;
-  color: #ffffff;
-  box-shadow: 0 0 25px rgba(153, 27, 27, 0.4);
+  background: var(--accent-reaction);
+  color: #000000;
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
 }
 
 /* --- Gold Accents (Snake) --- */
 .btn-snake {
-  border: 2px solid #eab308;
-  color: #fef08a;
-  background: rgba(234, 179, 8, 0.02);
+  border: 1px solid var(--accent-snake);
+  color: var(--accent-snake);
+  background: rgba(234, 179, 8, 0.01);
 }
 .btn-snake:hover {
-  background: #eab308;
+  background: var(--accent-snake);
   color: #000000;
-  box-shadow: 0 0 25px rgba(234, 179, 8, 0.35);
+  box-shadow: 0 0 25px rgba(234, 179, 8, 0.4);
+}
+
+/* --- Purple Accents (Core Defense) --- */
+.btn-defense {
+  border: 1px solid var(--accent-defense);
+  color: var(--accent-defense);
+  background: rgba(168, 85, 247, 0.01);
+}
+.btn-defense:hover {
+  background: var(--accent-defense);
+  color: #000000;
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+}
+
+/* --- Emerald Green Accents (Quantum Breaker - NEW!) --- */
+.btn-breaker {
+  border: 1px solid var(--accent-breaker);
+  color: var(--accent-breaker);
+  background: rgba(0, 255, 204, 0.01);
+}
+.btn-breaker:hover {
+  background: var(--accent-breaker);
+  color: #000000;
+  box-shadow: 0 0 25px rgba(0, 255, 204, 0.4);
 }
 
 /* ==========================================================================
@@ -219,17 +307,38 @@ body {
     transparent 60%
   );
 }
+
+/* Updated high-contrast red glow */
 .game-launcher-card:hover .reaction-glow {
   background: radial-gradient(
     circle at center,
-    rgba(153, 27, 27, 0.09) 0%,
+    rgba(239, 68, 68, 0.08) 0%,
     transparent 60%
   );
 }
+
 .game-launcher-card:hover .snake-glow {
   background: radial-gradient(
     circle at center,
     rgba(234, 179, 8, 0.06) 0%,
+    transparent 60%
+  );
+}
+
+/* Core Defense Glow Layer */
+.game-launcher-card:hover .defense-glow {
+  background: radial-gradient(
+    circle at center,
+    rgba(168, 85, 247, 0.07) 0%,
+    transparent 60%
+  );
+}
+
+/* Quantum Breaker Glow Layer (NEW!) */
+.game-launcher-card:hover .breaker-glow {
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 204, 0.07) 0%,
     transparent 60%
   );
 }
@@ -245,7 +354,12 @@ body {
   font-size: 0.75rem;
   font-weight: 700;
   color: var(--text-muted);
-  border-top: 2px solid var(--border-color);
   padding-top: 2rem;
   margin-top: auto;
+
+  /* Your updated and newly typed properties: */
+  border-top: 1px solid var(--border-color);
+  letter-spacing: 1px;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
